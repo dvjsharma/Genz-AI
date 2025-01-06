@@ -1,7 +1,9 @@
 """
 Brief: This file contains the functions to fetch data from Instagram via Instaloader.
 
-Description: This file contains the function `fetch_data` which takes the Instagram profile name as input and fetches the data from the profile. The data is saved in a CSV file with the following columns:
+Description: This file contains the function `fetch_data` which takes the Instagram profile 
+name as input and fetches the data from the profile. The data is saved in a CSV file with the 
+following columns:
 - post_id: The unique identifier of the post.
 - post_type: The type of the post (static-image or reels).
 - likes: The number of likes on the post.
@@ -24,7 +26,10 @@ from tqdm import tqdm
 from errors.invalid_input_error import InvalidInputError
 from errors.runtime_error import RuntimeError
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
 
 def fetch_data(profile_name: str) -> str:
     """
@@ -34,33 +39,47 @@ def fetch_data(profile_name: str) -> str:
     :return: The data fetched from the profile in CSV format.
     """
     if not profile_name.strip():
-        raise InvalidInputError("Profile name is empty. Please provide a valid profile name.")
-    
+        raise InvalidInputError(
+            "Profile name is empty. Please provide a valid profile name."
+        )
+
     try:
         logging.info(f"Fetching data for profile: {profile_name}")
-        
+
         loader = instaloader.Instaloader()
         logging.info(f"Fetching metadata for profile: {profile_name}")
         profile = instaloader.Profile.from_username(loader.context, profile_name)
         total_posts = profile.mediacount
 
         output = io.StringIO()
-        fieldnames = ['post_id', 'post_type', 'likes', 'comments', 'date_posted', 'vectorize', 'content', 'metadata', 'username']
+        fieldnames = [
+            "post_id",
+            "post_type",
+            "likes",
+            "comments",
+            "date_posted",
+            "vectorize",
+            "content",
+            "metadata",
+            "username",
+        ]
         writer = csv.DictWriter(output, fieldnames=fieldnames)
         writer.writeheader()
-        
-        for post in tqdm(profile.get_posts(), total=total_posts, desc="Processing posts", unit="post"):
+
+        for post in tqdm(
+            profile.get_posts(), total=total_posts, desc="Processing posts", unit="post"
+        ):
             post_type = "reels" if post.is_video else "static_image"
             post_details = {
-                'username': profile_name,
-                'post_id': post.mediaid,
-                'post_type': post_type,
-                'likes': post.likes,
-                'comments': post.comments,
-                'date_posted': post.date.isoformat(),
-                'content': f"A post with username:\"{profile_name}\", post_id: \"{post.mediaid}\", post_type: \"{post_type}\", likes: {post.likes}, comments: {post.comments}, date_posted: \"{post.date.isoformat()}\".",
-                'vectorize': f"A post with username:\"{profile_name}\", post_id: \"{post.mediaid}\", post_type: \"{post_type}\", likes: {post.likes}, comments: {post.comments}, date_posted: \"{post.date.isoformat()}\".",
-                'metadata': str({"post_type": post_type, "username": profile_name}),
+                "username": profile_name,
+                "post_id": post.mediaid,
+                "post_type": post_type,
+                "likes": post.likes,
+                "comments": post.comments,
+                "date_posted": post.date.isoformat(),
+                "content": f'A post with username:"{profile_name}", post_id: "{post.mediaid}", post_type: "{post_type}", likes: {post.likes}, comments: {post.comments}, date_posted: "{post.date.isoformat()}".',
+                "vectorize": f'A post with username:"{profile_name}", post_id: "{post.mediaid}", post_type: "{post_type}", likes: {post.likes}, comments: {post.comments}, date_posted: "{post.date.isoformat()}".',
+                "metadata": str({"post_type": post_type, "username": profile_name}),
             }
             writer.writerow(post_details)
 

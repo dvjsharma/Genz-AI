@@ -40,3 +40,5 @@ jobs:
             media,
             manage.py,
             settings.py,
+          args: |
+            --extend-ignore=W291,E401,F841,E203,E501

@@ -1,7 +1,10 @@
 """
 Brief: This file contains the functions to query a vector search API and return the response.
 
-Description: This file contains the function `vector_search` to perform a vector search using the specified query message. The function sends a POST request to the vector search API (langflow) with the input message and returns the JSON response. It also handles errors related to missing environment variables and API request failures.
+Description: This file contains the function `vector_search` to perform a vector search using 
+the specified query message. The function sends a POST request to the vector search API (langflow) 
+with the input message and returns the JSON response. It also handles errors related to missing 
+environment variables and API request failures.
 
 Author: Team Genz-AI
 
@@ -12,7 +15,10 @@ import requests
 import logging
 from errors.runtime_error import RuntimeError
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
 
 def vector_search(query_message: str) -> dict:
     """
