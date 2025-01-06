@@ -1,3 +1,3 @@
-
-profile_name = input("Enter the Instagram profile name: ")
-fetch_data(profile_name)
+from services.instagram_service import fetch_data
+csv = fetch_data("sergi_gsxs")
+print(csv)
