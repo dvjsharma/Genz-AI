@@ -40,6 +40,7 @@ def fetch_data(profile_name: str) -> str:
         logging.info(f"Fetching data for profile: {profile_name}")
         
         loader = instaloader.Instaloader()
+        logging.info(f"Fetching metadata for profile: {profile_name}")
         profile = instaloader.Profile.from_username(loader.context, profile_name)
         total_posts = profile.mediacount
 
