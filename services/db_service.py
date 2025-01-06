@@ -1,3 +1,12 @@
+"""
+Brief: This file contains the functions to connect to the Astra database and upload data to a vector collection.
+
+Description: This file contains the functions `connect_to_database`, `create_or_get_collection`, and `upload_csv_to_vector_collection` to connect to the Astra database and upload data to a vector collection. The `connect_to_database` function connects to the Astra database using environment variables for the endpoint and token. The `create_or_get_collection` function fetches an existing collection from the database or creates a new one if it does not exist. The `upload_csv_to_vector_collection` function uploads in-memory CSV data to a vector collection, chunking the data to avoid performance issues.
+
+Author: Team Genz-AI
+
+"""
+
 import os, ast, io
 import logging
 import pandas as pd
