@@ -1,0 +1,11 @@
+certifi==2024.12.14
+charset-normalizer==3.4.1
+flake8==7.1.1
+idna==3.10
+instaloader==4.14
+mccabe==0.7.0
+pycodestyle==2.12.1
+pyflakes==3.2.0
+requests==2.32.3
+tqdm==4.67.1
+urllib3==2.3.0
