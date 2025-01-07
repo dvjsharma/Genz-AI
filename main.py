@@ -13,6 +13,7 @@ Author: Team Genz-AI
 """
 
 import os
+from dotenv import load_dotenv
 from services.instagram_service import fetch_data
 from services.db_service import (
     connect_to_database,
@@ -50,6 +51,7 @@ def main():
     """
     Main function to interact with the user via the command line.
     """
+    load_dotenv()
     instagram_id = input("Enter the Instagram user ID: ")
     query = input("Enter the query string: ")
 
