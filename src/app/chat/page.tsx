@@ -19,6 +19,7 @@ export default function ChatInterface() {
   const [instagramId, setInstagramId] = useState('')
   const [processing, setProcessing] = useState(false)
   const [isConnected, setIsConnected] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInstagramConnect = async () => {
     if (!instagramId) return
@@ -35,6 +36,8 @@ export default function ChatInterface() {
         role: 'assistant',
         content: 'Sorry, there was an error processing your Instagram data.'
       }])
+      setErrorMessage("Failed to process Instagram data. Please try again.");
+      setTimeout(() => setErrorMessage(""), 5000);
     }
     setProcessing(false)
   }
@@ -81,6 +84,11 @@ export default function ChatInterface() {
               <p className="text-white/80">
                 Connect your Instagram account to get personalized insights about your content
               </p>
+              {errorMessage && (
+                <div className="bg-red-500 text-white rounded-lg px-4 py-2">
+                  {errorMessage}
+                </div>
+              )}
               <div className="space-y-4">
                 <Input
                   placeholder="Enter Instagram handle"
