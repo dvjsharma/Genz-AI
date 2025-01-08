@@ -6,6 +6,10 @@ import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { processInstagramData, getChatResponse } from "../actions"
 import { Send, Loader2, Instagram } from 'lucide-react'
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeSanitize from 'rehype-sanitize';
+import rehypeHighlight from 'rehype-highlight';
 
 interface Message {
   role: 'user' | 'assistant'
@@ -28,7 +32,7 @@ export default function ChatInterface() {
       const result = await processInstagramData(instagramId)
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: `${result.message}. You can now ask specific questions about your content!`
+        content: `${result.message} You can now ask specific questions about your content!`
       }])
       setIsConnected(true)
     } catch (error) {
@@ -139,7 +143,12 @@ export default function ChatInterface() {
                           : 'bg-white/10 text-white'
                       }`}
                     >
-                      {message.content}
+                      <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeSanitize, rehypeHighlight]}
+                      >
+                        {message.content}
+                      </ReactMarkdown>
                     </div>
                   </div>
                 ))}
