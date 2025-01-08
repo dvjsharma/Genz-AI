@@ -12,7 +12,7 @@ export default function LandingPage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <span className="text-xl font-bold text-white">
-                  Social Pulse
+                  InstaIQ
                 </span>
               </div>
               <div className="flex space-x-4">
@@ -38,6 +38,7 @@ export default function LandingPage() {
                 Get AI-powered insights about your Instagram content and engagement
               </p>
               <Link href="/chat">
+                <br/>
                 <Button className="bg-white/20 hover:bg-white/30 backdrop-blur-lg text-white border border-white/20 px-8 py-6 text-lg">
                   Start Analyzing <ArrowRight className="ml-2" />
                 </Button>
