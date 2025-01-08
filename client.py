@@ -149,7 +149,7 @@ def main():
     )
 
     if "instagram_processed" not in st.session_state:
-        st.session_state.instagram_processed = False
+        st.session_state.instagram_processed = True
 
     if not st.session_state.instagram_processed:
         st.markdown(
