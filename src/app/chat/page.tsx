@@ -73,7 +73,7 @@ export default function ChatInterface() {
         {/* Header */}
         <div className="rounded-2xl backdrop-blur-xl bg-white/10 border border-white/20 shadow-lg p-4 mb-6">
           <h1 className="text-xl font-bold text-white text-center">
-            Social Pulse Chat
+            InstaIQ Chat
           </h1>
         </div>
 

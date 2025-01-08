@@ -16,7 +16,6 @@ export default function LandingPage() {
                 </span>
               </div>
               <div className="flex space-x-4">
-                <Button variant="ghost" className="text-white hover:bg-white/20">About</Button>
                 <Link href="/chat">
                   <Button className="bg-white/20 hover:bg-white/30 backdrop-blur-lg text-white border border-white/20">
                     Try Now
@@ -32,10 +31,10 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h1 className="text-5xl font-bold text-white leading-tight">
-                Analyze Your Social Media Content
+                Transform Your <span className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600">Social Media</span> Presence
               </h1>
               <p className="text-xl text-white/80">
-                Get AI-powered insights about your Instagram content and engagement
+                Get Al-powered insights about your Instagram content and engagement. Understand your audience better than ever before.
               </p>
               <Link href="/chat">
                 <br/>
