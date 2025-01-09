@@ -3,7 +3,7 @@
 export async function processInstagramData(username: string) {
   // This would connect to your database and process the Instagram data
   console.log('Processing data for:', username)
-  const response = await fetch('http://13.232.28.135:5000/process_data', {
+  const response = await fetch('http://127.0.0.1:5000/process_data', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export async function getChatResponse(message: string, instagramData?: any) {
     };
 
     // Send a POST request
-    const response = await fetch('http://13.232.28.135:5000/process_query', {
+    const response = await fetch('http://127.0.0.1:5000/process_query', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
