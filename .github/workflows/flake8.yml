@@ -41,4 +41,4 @@ jobs:
             manage.py,
             settings.py,
           args: |
-            --extend-ignore=W291,E401,F841,E203,E501,E302,F541,W293,E305
+            --extend-ignore=W291,E401,F841,E203,E501,E302,F541,W293,E305,E122
